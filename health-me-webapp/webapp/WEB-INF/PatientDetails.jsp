@@ -1,6 +1,6 @@
-<%@page import="com.mysample.healthme.Patient"%>
+<%@page import="com.healthme.application.login.entity.Patient"%>
+<%@page import="com.healthme.application.login.entity.IPatient"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="com.mysample.healthme.IPatient"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -20,10 +20,8 @@
 
 <%
 	List<IPatient> patientList = new ArrayList<IPatient>();
-	IPatient p1 = new Patient();
+	IPatient p1 = new Patient(1l,"Abc");
 	p1.setBedNo(1l);
-	p1.setPatientId(1l);
-	p1.setPatientName("Abc");
 	patientList.add(p1);
 %>
 </head>

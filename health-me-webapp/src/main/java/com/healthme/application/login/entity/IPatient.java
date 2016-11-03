@@ -6,11 +6,7 @@ public interface IPatient extends Serializable {
 
 	Long getPatientId();
 
-	void setPatientId(Long patientId);
-
 	String getPatientName();
-
-	void setPatientName(String patientName);
 
 	Long getBedNo();
 
