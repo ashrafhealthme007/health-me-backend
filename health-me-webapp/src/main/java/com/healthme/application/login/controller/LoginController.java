@@ -14,7 +14,6 @@ public class LoginController {
 
         @RequestMapping("/greeting")
         public Patient LoginController(@RequestParam(value="name", defaultValue="World") String name) {
-            return new Patient(counter.incrementAndGet(),
-                                String.format(template, name));
+            return new Patient(counter.incrementAndGet(),String.format(template, name));
         }
 }

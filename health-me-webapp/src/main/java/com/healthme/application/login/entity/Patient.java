@@ -1,12 +1,15 @@
 package com.healthme.application.login.entity;
 
-import com.healthme.application.login.entity.IPatient;
-
 public class Patient implements IPatient {
 
 	private Long patientId;
 	private String patientName;
 	private Long bedNo;
+
+	public Patient(long patientId, String patientName) {
+		this.patientId = patientId;
+		this.patientName = patientName;
+	}
 
 	/*
 	 * (non-Javadoc)
@@ -21,31 +24,11 @@ public class Patient implements IPatient {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.mysample.healthme.IPatient#setPatientId(java.lang.Long)
-	 */
-	@Override
-	public void setPatientId(Long patientId) {
-		this.patientId = patientId;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
 	 * @see com.mysample.healthme.IPatient#getPatientName()
 	 */
 	@Override
 	public String getPatientName() {
 		return patientName;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.mysample.healthme.IPatient#setPatientName(java.lang.String)
-	 */
-	@Override
-	public void setPatientName(String patientName) {
-		this.patientName = patientName;
 	}
 
 	/*
