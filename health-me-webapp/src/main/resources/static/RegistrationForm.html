@@ -17,9 +17,26 @@ table {
 	border-collapse: collapse;
 }
 </style>
+<script type="text/javascript">
+function register(){
+$.ajax({  
+    type: "GET",  
+    url: "/greeting",  
+    dataType: "json",  
+    success: function(resp){  
+      // we have the response  
+      alert("Server said123:\n '" + resp.patientName + "'");  
+    },  
+    error: function(e){  
+      alert('Error121212: ' + e);  
+    }  
+  });
+}
+
+
+</script>
 </head>
 <body>
-
 	<table width=100%>
 		<tr>
 			<td>Patient Id</td>
@@ -97,6 +114,15 @@ table {
 					<option value="d5">Doctor 5</option>
 			</select></td>
 		</tr>
+	</table>
+	
+		<table>
+
+		<tr>
+			<td width=50px><input type="button" value="Register" id="regBtn" name="regBtn" onclick="register()"></td>
+			<td width=50px><input type="button" value="Cancel" id="cancelBtn" name="cancelBtn"></td>
+		</tr>
+
 	</table>
 
 </body>
