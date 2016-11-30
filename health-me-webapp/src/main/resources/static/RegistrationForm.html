@@ -19,16 +19,19 @@ table {
 </style>
 <script type="text/javascript">
 function register(){
+	var formData = JSON.stringify($("#regForm").serializeArray());
+
 $.ajax({  
-    type: "GET",  
-    url: "/greeting",  
+    type: "POST",  
+    url: "/register",
+	data: formData,
     dataType: "json",  
     success: function(resp){  
       // we have the response  
-      alert("Server said123:\n '" + resp.patientName + "'");  
+      //alert("Server said123:\n '" + resp + "'");  
     },  
     error: function(e){  
-      alert('Error121212: ' + e);  
+     // alert('Error121212: ' + e);  
     }  
   });
 }
@@ -37,10 +40,11 @@ $.ajax({
 </script>
 </head>
 <body>
+<form action="/register" name="regForm"  method="POST">
 	<table width=100%>
 		<tr>
 			<td>Patient Id</td>
-			<td></td>
+			<td><input type="hidden" name="patientId"/></td>
 		</tr>
 		<tr>
 			<td>First Name</td>
@@ -56,18 +60,18 @@ $.ajax({
 		</tr>
 		<tr>
 			<td>Sex</td>
-			<td>M<input type="radio" name="sexm" /></td>
-			<td>F<input type="radio" name="sexf" /></td>
+			<td>M<input type="radio" name="sex" value="M"/></td>
+			<td>F<input type="radio" name="sex" value="F"/></td>
 
 		</tr>
 		<tr>
 			<td>Blood Group</td>
-			<td><input type="text" name="bldGrp" /></td>
+			<td><input type="text" name="bloodGroup" /></td>
 		</tr>
 
 		<tr>
 			<td>Martial Status</td>
-			<td><select style="width: 165px;">
+			<td><select style="width: 165px;" name="martialStatus">
 					<option value="-1">---select----</option>
 					<option value="Married">Married</option>
 					<option value="Widowed">Widowed</option>
@@ -80,9 +84,9 @@ $.ajax({
 
 			<td>Name of the dependent</td>
 
-			<td><input type="text" name="nameDep" /></td>
+			<td><input type="text" name="dependentName" /></td>
 			<td>Phone No.</td>
-			<td><input type="text" name="phnoDep"></td>
+			<td><input type="text" name="dependentPhoneNumber"></td>
 		</tr>
 
 		<tr>
@@ -91,9 +95,9 @@ $.ajax({
 		</tr>
 		<tr>
 			<td>Contact number</td>
-			<td><input type="text" name="phno"></td>
+			<td><input type="text" name="patientPhoneNumber"></td>
 			<td>Email</td>
-			<td><input type="text" name="email"></td>
+			<td><input type="text" name="patientEmail"></td>
 		</tr>
 		<tr>
 			<td>Address Details</td>
@@ -105,7 +109,7 @@ $.ajax({
 		</tr>
 		<tr>
 			<td>Primary Consultant</td>
-			<td><select style="width: 165px;">
+			<td><select style="width: 165px;" name="consultantName">
 					<option value="-1">---select----</option>
 					<option value="d1">Doctor 1</option>
 					<option value="d2">Doctor 2</option>
@@ -115,15 +119,14 @@ $.ajax({
 			</select></td>
 		</tr>
 	</table>
-	
 		<table>
 
 		<tr>
-			<td width=50px><input type="button" value="Register" id="regBtn" name="regBtn" onclick="register()"></td>
+			<td width=50px><input type="submit" value="Register" id="regBtn" name="regBtn" onclick="register()"></td>
 			<td width=50px><input type="button" value="Cancel" id="cancelBtn" name="cancelBtn"></td>
 		</tr>
 
 	</table>
-
+</form>
 </body>
 </html>

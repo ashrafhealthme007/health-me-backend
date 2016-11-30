@@ -10,8 +10,8 @@ import org.springframework.context.annotation.Configuration;
 @ComponentScan("com.healthme.application")
 public class WebAppInitializer{
 
-    public static void main(String[] args) throws Exception{
-        SpringApplication.run(WebAppInitializer.class, args);
-    }
+    public static void main(String[] args) {
+		SpringApplication.run(WebAppInitializer.class, args);
+	}
 }
 
