@@ -10,44 +10,56 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
+<style>
+hmtable {
+	border-spacing: 2em;
+	border-collapse: collapse;
+	width: 100%;
+}
+hmrow {border-spacing:5em}
+</style>
 <body>
-<form action="/search" method="POST">
-	<table>
-		<tr>
-			<td>Name of the patient</td>
-			<td><input type="text" name="pname" /></td>
-		</tr>
-		<tr>
-			<td>UHID</td>
-			<td><input type="text" name="uhid" /></td>
-		</tr>
-		<tr>
-			<td>Patient Id</td>
-			<td><input type="text" name="pid" /></td>
-		</tr>
-		<tr>
-			<td>Ph No.</td>
-			<td><input type="text" name="phno" /></td>
-		</tr>
-		<tr>
-			<td>Date Of Consultation</td>
-			<td><input type="date" name="conDate" /></td>
-		</tr>
-		<tr>
-			<td>Name of the Consultant</td>
-			<td><input type="text" name="conName" /></td>
-		</tr>
-	</table>
+	<form action="/search" method="POST">
+		<table class="hmtable">
+			<tr>
+				<td><h2>Search</h2></td>
+			</tr>
+			<tr>
+				<td>Name of the patient</td>
+				<td><input type="text" name="pname" /></td>
+			</tr>
+			<tr>
+				<td>UHID</td>
+				<td><input type="text" name="uhid" /></td>
+			</tr>
+			<tr>
+				<td>Patient Id</td>
+				<td><input type="text" name="pid" /></td>
+			</tr>
+			<tr>
+				<td>Ph No.</td>
+				<td><input type="text" name="phno" /></td>
+			</tr>
+			<tr>
+				<td>Date Of Consultation</td>
+				<td><input type="date" name="conDate" /></td>
+			</tr>
+			<tr>
+				<td>Name of the Consultant</td>
+				<td><input type="text" name="conName" /></td>
+			</tr>
+		</table>
 
-	<table>
+		<table>
 
-		<tr>
-			<td width=50px><input type="submit" value="Search"	id="searchBtn"></td>
+			<tr>
+				<td width=50px><input type="submit" value="Search"
+					id="searchBtn"></td>
 
-			<td><input type="submit" value="Cancel" id="cancelBtn"></td>
-		</tr>
+				<td><input type="submit" value="Cancel" id="cancelBtn"></td>
+			</tr>
 
-	</table>
+		</table>
 	</form>
 
 </body>

@@ -7,12 +7,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@XmlRootElement
 @Document(collection = "PATIENT")
 public class Patient implements IPatient {
 
 	private Long patientId;
-
 	private String patientName;
 	private Date dob;
 	private Long bedNo;

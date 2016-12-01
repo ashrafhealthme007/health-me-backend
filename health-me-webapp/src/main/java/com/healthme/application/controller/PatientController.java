@@ -3,13 +3,13 @@ package com.healthme.application.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -35,12 +35,14 @@ public class PatientController {
 	public ModelAndView home(Model model) {
 		List patientList = (List) patientRepository.findAll();
 		model.addAttribute("patientList", patientList);
-		return new ModelAndView("redirect:home.html");
+		return new ModelAndView("redirect:main.html");
 	}
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	@ResponseBody
-	public ResponseEntity<Patient> registerPatient(@Valid Patient patient, HttpServletRequest request) {
+	public ResponseEntity<Patient> registerPatient(@Valid Patient patient, HttpServletRequest request, BindingResult result) {
+		if(result.hasErrors()){
+			new ResponseEntity<Patient>(patient, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 		nameCreator(patient, request);
 		patientRepository.save(patient);
 		return new ResponseEntity<Patient>(patient, HttpStatus.OK);
@@ -60,6 +62,12 @@ public class PatientController {
 		model.addAttribute("patientList", patientSearchRepository.searchPatients(search));
 		model.addAttribute("search", search);
 		return "searchpatient";
+	}
+
+	@RequestMapping("/delete")
+	public String deletePatients() {
+		patientRepository.deleteAll();
+		return "home";
 	}
 
 }
