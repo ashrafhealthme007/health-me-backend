@@ -16,14 +16,19 @@ hmtable {
 	border-collapse: collapse;
 	width: 100%;
 }
-hmrow {border-spacing:5em}
+th, td {
+    padding: 10px;
+    border-spacing:5em
+}
+td_text {
+   background-color: #ffff;
+}
+td:nth-child(odd) {background-color: #f2f2f2}
 </style>
 <body>
 	<form action="/search" method="POST">
+	<div><h1>Search</h1></div>
 		<table class="hmtable">
-			<tr>
-				<td><h2>Search</h2></td>
-			</tr>
 			<tr>
 				<td>Name of the patient</td>
 				<td><input type="text" name="pname" /></td>
@@ -50,7 +55,7 @@ hmrow {border-spacing:5em}
 			</tr>
 		</table>
 
-		<table>
+		<table align="center">
 
 			<tr>
 				<td width=50px><input type="submit" value="Search"

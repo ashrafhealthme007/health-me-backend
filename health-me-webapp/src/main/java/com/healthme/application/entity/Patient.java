@@ -3,7 +3,7 @@ package com.healthme.application.entity;
 import java.util.Date;
 import java.util.List;
 
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -11,21 +11,37 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Patient implements IPatient {
 
 	private Long patientId;
+
 	private String patientName;
+
 	private Date dob;
+
 	private Long bedNo;
+
 	private String sex;
+
 	private String bloodGroup;
+
 	private String martialStatus;
+
 	private String dependentName;
+
 	private String occupation;
+
 	private String uhid;
+
 	private Long patientPhoneNumber;
+
 	private String patientEmail;
+
 	private Long dependentPhoneNumber;
+
 	private String address;
+
 	private List<String> listOfDiseases;
+
 	private Date consultationDate;
+
 	private String consultantName;
 
 	public Patient() {
@@ -225,6 +241,17 @@ public class Patient implements IPatient {
 	@Override
 	public void setConsultantName(String consultantName) {
 		this.consultantName = consultantName;
+	}
+
+	@Override
+	public String toString() {
+		return "Patient [patientId=" + patientId + ", patientName=" + patientName + ", dob=" + dob + ", bedNo=" + bedNo
+				+ ", sex=" + sex + ", bloodGroup=" + bloodGroup + ", martialStatus=" + martialStatus
+				+ ", dependentName=" + dependentName + ", occupation=" + occupation + ", uhid=" + uhid
+				+ ", patientPhoneNumber=" + patientPhoneNumber + ", patientEmail=" + patientEmail
+				+ ", dependentPhoneNumber=" + dependentPhoneNumber + ", address=" + address + ", listOfDiseases="
+				+ listOfDiseases + ", consultationDate=" + consultationDate + ", consultantName=" + consultantName
+				+ "]";
 	}
 
 }
