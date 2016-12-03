@@ -22,10 +22,6 @@ public interface IPatient extends Serializable {
 
 	Date getConsultationDate();
 
-	void setListOfDiseases(List<String> listOfDiseases);
-
-	List<String> getListOfDiseases();
-
 	void setAddress(String address);
 
 	String getAddress();
@@ -73,5 +69,9 @@ public interface IPatient extends Serializable {
 	void setDob(Date dob);
 
 	Date getDob();
+
+	void setProblem(String problem);
+
+	String getProblem();
 
 }

@@ -38,7 +38,7 @@ public class Patient implements IPatient {
 
 	private String address;
 
-	private List<String> listOfDiseases;
+	private String problem;
 
 	private Date consultationDate;
 
@@ -193,14 +193,15 @@ public class Patient implements IPatient {
 		this.address = address;
 	}
 
+
 	@Override
-	public List<String> getListOfDiseases() {
-		return listOfDiseases;
+	public String getProblem() {
+		return problem;
 	}
 
 	@Override
-	public void setListOfDiseases(List<String> listOfDiseases) {
-		this.listOfDiseases = listOfDiseases;
+	public void setProblem(String problem) {
+		this.problem = problem;
 	}
 
 	@Override
@@ -249,8 +250,8 @@ public class Patient implements IPatient {
 				+ ", sex=" + sex + ", bloodGroup=" + bloodGroup + ", martialStatus=" + martialStatus
 				+ ", dependentName=" + dependentName + ", occupation=" + occupation + ", uhid=" + uhid
 				+ ", patientPhoneNumber=" + patientPhoneNumber + ", patientEmail=" + patientEmail
-				+ ", dependentPhoneNumber=" + dependentPhoneNumber + ", address=" + address + ", listOfDiseases="
-				+ listOfDiseases + ", consultationDate=" + consultationDate + ", consultantName=" + consultantName
+				+ ", dependentPhoneNumber=" + dependentPhoneNumber + ", address=" + address + ", problem="
+				+ problem + ", consultationDate=" + consultationDate + ", consultantName=" + consultantName
 				+ "]";
 	}
 
