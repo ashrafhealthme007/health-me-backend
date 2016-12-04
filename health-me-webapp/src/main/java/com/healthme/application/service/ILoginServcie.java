@@ -1,8 +1,8 @@
 package com.healthme.application.service;
 
-import com.healthme.application.entity.Patient;
+import com.healthme.application.entity.IPatient;
 
 public interface ILoginServcie {
 
-    boolean isUserValidUser(Patient patient);
+    boolean isUserValidUser(IPatient patient);
 }

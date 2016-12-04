@@ -12,92 +12,154 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style>
-table {
+hmtable {
 	border-spacing: 2em;
 	border-collapse: collapse;
 }
+th, td {
+    padding: 8px;
+    border-spacing:5em
+}
+td:nth-child(odd) {background-color: #f2f2f2}
+
 </style>
+<script type="text/javascript">
+	function register() {
+		var formData = JSON.stringify($("#regForm").serializeArray());
+
+		$.ajax({
+			type : "POST",
+			url : "/register",
+			data : formData,
+			dataType : "json",
+			contentType: "application/json; charset=utf-8",
+			success : function(resp) {
+				   $('#msg').html("Patient Registered Successfully.");
+			},
+			error : function(xhr) {
+			    console.log(xhr);
+				   $('#msg').html("Error in Patient Registration.");
+				   if(xhr.status == '400' || xhr.status == '404'){
+				     $("#regTable").hide();
+				     $("#btnTable").hide();
+				     add_page_not_found();
+				   }
+			}
+		});
+	}
+	
+    function add_page_not_found() {
+        var src = "/images/pagenotfound.jpg";
+        show_image(src, 1000,1000, "Page Not Found");
+    }
+
+
+    function show_image(src, width, height, alt) {
+        var img = document.createElement("img");
+        img.src = src;
+        img.width = width;
+        img.height = height;
+        img.alt = alt;
+        document.body.appendChild(img);
+    }
+       
+</script>
 </head>
 <body>
+	<form action="/register" name="regForm" method="POST">
 
-	<table width=100%>
-		<tr>
-			<td>Patient Id</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>First Name</td>
-			<td><input type="text" name="fname" /></td>
-			<td>Middle Name</td>
-			<td><input type="text" name="mname" /></td>
-			<td>Last Name</td>
-			<td><input type="text" name="lname" /></td>
-		</tr>
-		<tr>
-			<td>Date of Birth</td>
-			<td><input type="date" name="dob" /></td>
-		</tr>
-		<tr>
-			<td>Sex</td>
-			<td>M<input type="radio" name="sexm" /></td>
-			<td>F<input type="radio" name="sexf" /></td>
+		<div>
+			<table>
+				<tr>
+					<td><span id="msg" style="font-family: arial;" ></span></td>
+				</tr>
+			</table>
+		</div>
+		<div><h1>Registration</h1></div>
+		<table width=100% class="hmtable" id="regTable">
+			<tr >
+				<td>Patient Id</td>
+				<td><input type="hidden" name="patientId" /></td>
+			</tr>
+			<tr >
+				<td>First Name</td>
+				<td><input type="text" name="fname" /></td>
+				<td>Middle Name</td>
+				<td><input type="text" name="mname" /></td>
+				<td>Last Name</td>
+				<td><input type="text" name="lname" /></td>
+			</tr>
+			<tr >
+				<td>Date of Birth</td>
+				<td><input type="date" name="dob" /></td>
+			</tr>
+			<tr >
+				<td>Sex</td>
+				<td>M<input type="radio" name="sex" value="M" /></td>
+				<td>F<input type="radio" name="sex" value="F" /></td>
+			</tr>
+			<tr >
+				<td>Blood Group</td>
+				<td><input type="text" name="bloodGroup" /></td>
+			</tr>
 
-		</tr>
-		<tr>
-			<td>Blood Group</td>
-			<td><input type="text" name="bldGrp" /></td>
-		</tr>
+			<tr >
+				<td>Martial Status</td>
+				<td><select style="width: 165px;" name="martialStatus">
+						<option value="-1">---select----</option>
+						<option value="Married">Married</option>
+						<option value="Widowed">Widowed</option>
+						<option value="Separated">Separated</option>
+						<option value="Divorced">Divorced</option>
+						<option value="Single">Single</option>
+				</select></td>
+			</tr>
+			<tr >
 
-		<tr>
-			<td>Martial Status</td>
-			<td><select style="width: 165px;">
-					<option value="-1">---select----</option>
-					<option value="Married">Married</option>
-					<option value="Widowed">Widowed</option>
-					<option value="Separated">Separated</option>
-					<option value="Divorced">Divorced</option>
-					<option value="Single">Single</option>
-			</select></td>
-		</tr>
-		<tr>
+				<td>Name of the dependent</td>
 
-			<td>Name of the dependent</td>
+				<td><input type="text" name="dependentName" /></td>
+				<td>Phone No.</td>
+				<td><input type="text" name="dependentPhoneNumber"></td>
+			</tr>
 
-			<td><input type="text" name="nameDep" /></td>
-			<td>Phone No.</td>
-			<td><input type="text" name="phnoDep"></td>
-		</tr>
+			<tr >
+				<td>Occupation</td>
+				<td><input type="text" id="occupation" name="occupation"></td>
+			</tr>
+			<tr >
+				<td>Contact number</td>
+				<td><input type="text" name="patientPhoneNumber"></td>
+				<td>Email</td>
+				<td><input type="text" name="patientEmail"></td>
+			</tr>
+			<tr >
+				<td>Address Details</td>
+				<td><textarea rows="4" cols="50" name="address"></textarea></td>
+			</tr>
+			<tr >
+				<td>Problem</td>
+				<td><input type="text" id="problem" name="problem"></td>
+			</tr>
+			<tr >
+				<td>Primary Consultant</td>
+				<td><select style="width: 165px;" name="consultantName">
+						<option value="-1">---select----</option>
+						<option value="d1">Doctor 1</option>
+						<option value="d2">Doctor 2</option>
+						<option value="d3">Doctor 3</option>
+						<option value="d4">Doctor 4</option>
+						<option value="d5">Doctor 5</option>
+				</select></td>
+			</tr>
+		</table>
+		<table id="btnTable" align="center">
+			<tr>
+				<td width=50px><input type="submit" value="Register" id="regBtn" name="regBtn" onclick="register()"></td>
+				<td width=50px><input type="button" value="Cancel" id="cancelBtn" name="cancelBtn"></td>
+			</tr>
 
-		<tr>
-			<td>Occupation</td>
-			<td><input type="text" id="occupation" name="occupation"></td>
-		</tr>
-		<tr>
-			<td>Contact number</td>
-			<td><input type="text" name="phno"></td>
-			<td>Email</td>
-			<td><input type="text" name="email"></td>
-		</tr>
-		<tr>
-			<td>Address Details</td>
-			<td><textarea rows="4" cols="50" name="address"></textarea></td>
-		</tr>
-		<tr>
-			<td>Problem</td>
-			<td><input type="text" id="problem" name="problem"></td>
-		</tr>
-		<tr>
-			<td>Primary Consultant</td>
-			<td><select style="width: 165px;">
-					<option value="-1">---select----</option>
-					<option value="d1">Doctor 1</option>
-					<option value="d2">Doctor 2</option>
-					<option value="d3">Doctor 3</option>
-					<option value="d4">Doctor 4</option>
-					<option value="d5">Doctor 5</option>
-			</select></td>
-		</tr>
-	</table>
-
+		</table>
+	</form>
 </body>
 </html>

@@ -4,9 +4,12 @@
 <title>Home</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
 
@@ -57,35 +60,76 @@ body {
 		font-size: 18px;
 	}
 }
+
+table, th, td {
+	border: 1px solid black;
+	border-spacing: 0px;
+}
+
+th, td {
+	padding: 10px;
+}
 </style>
 <body>
+	<form name="homePage" action="homepath">
+	
 
-	<div id="mySidenav" class="sidenav">
-		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-		<a href="#">Home</a>
-		<a href="#">Registration Form</a>
-		<a href="#">Appointments</a>
-		<a href="#">Patient details</a>
-		<a href="#">History</a>
-		<a href="#">Search</a>
-		<a href="#">Contact Info</a>
-		<a href="#">Settings</a>
-		<a href="#">Exit</a>
-	</div>
-	<div class="jumbotron text-center">
-		<h4>Name of the Organization</h4>
-	</div>
-	<span style="font-size: 30px; cursor: pointer" onclick="openNav()">&#9776;
-		open</span>
+		<div id="mySidenav" class="sidenav">
+			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+			<a href="#">Home</a> 
+			<a href="registrationform.html" target="CenterWindow">Registration Form</a> 
+			<a href="#" target="CenterWindow">Appointments</a> 
+			<a href="#" target="CenterWindow">Patient details</a> 
+			<a href="#" target="CenterWindow">History</a> 
+			<a href="searchpatient.html" target="CenterWindow">Search</a>
+			<a href="#" target="CenterWindow">Contact Info</a>
+			<a href="#" target="CenterWindow">Settings</a>
+			<a href="#" target="CenterWindow">Exit</a>
+		</div>
+		<div class="jumbotron text-center">
+			<h4>Name of the Organization</h4>
+		</div>
+		
+<!-- 
+		<div align="center">
+			<table>
+				<thead>
+					<tr>
+						<th>Patient Name</th>
+						<th>PID</th>
+						<th>UHID</th>
+						<th>Date Of Consultation</th>
+						<th>Name Of Consultant</th>
+						<th>Ph. No.</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="patient : ${patientList}">
+						<td th:text="${patient.patientName}"></td>
+						<td th:text="${patient.patientId}"></td>
+						<td th:text="${patient.uhid}"></td>
+						<td th:text="${patient.consultationDate}"></td>
+						<td th:text="${patient.consultantName}"></td>
+						<td th:text="${patient.patientPhoneNumber}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div> -->
+		<span style="font-size: 30px; cursor: pointer" onclick="openNav()">&#9776;
+			open</span>
 
-	<script>
-		function openNav() {
-			document.getElementById("mySidenav").style.width = "250px";
-		}
 
-		function closeNav() {
-			document.getElementById("mySidenav").style.width = "0";
-		}
-	</script>
+	</form>
+
 </body>
+<script>
+	function openNav() {
+		document.getElementById("mySidenav").style.width = "250px";
+	}
+
+	function closeNav() {
+		document.getElementById("mySidenav").style.width = "0";
+	}
+</script>
+
 </html>
